@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pointsampler"
+version = "0.1.0"
+description = "Semantic-aware point sampling for 3D segmentation"
+requires-python = ">=3.10"
+dynamic = ["dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.packages.find]
+include = ["pointcept*", "tools*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["gpu: requires CUDA and compiled point-cloud dependencies"]
+
+[tool.ruff.lint]
+select = ["F821", "F822", "F823"]
